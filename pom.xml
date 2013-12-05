@@ -8,13 +8,13 @@
   </parent>
 
   <groupId>com.urbanairship</groupId>
-  <artifactId>datacube</artifactId>
-  <version>1.2.4-SNAPSHOT</version>
+  <artifactId>fisher-datacube</artifactId>
+  <version>1.2.4</version>
   <packaging>jar</packaging>
 
   <name>datacube</name>
   <description>OLAP cube-like streaming aggregate library</description>
-  <url>http://github.com/urbanairship/datacube</url>
+  <url>http://github.com/ejoncas/datacube</url>
 
   <build>
     <plugins>
@@ -63,7 +63,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <tagBase>git://github.com/urbanairship/datacube</tagBase>
+          <tagBase>git://github.com/ejoncas/datacube</tagBase>
         </configuration>
       </plugin>
     </plugins>
@@ -78,9 +78,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git://@github.com/urbanairship/datacube.git</connection>
-    <developerConnection>scm:git:git@github.com:urbanairship/datacube.git</developerConnection>
-    <url>git@github.com:urbanairship/datacube.git</url>
+    <connection>scm:git:git://@github.com/ejoncas/datacube.git</connection>
+    <developerConnection>scm:git:git@github.com:ejoncas/datacube.git</developerConnection>
+    <url>git@github.com:ejoncas/datacube.git</url>
     <tag>datacube-1.2.0</tag>
   </scm>
 
