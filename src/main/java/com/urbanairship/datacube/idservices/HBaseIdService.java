@@ -34,6 +34,7 @@ import com.urbanairship.datacube.dbharnesses.WithHTable;
 import com.urbanairship.datacube.dbharnesses.WithHTable.ScanRunnable;
 
 public class HBaseIdService implements IdService {
+	
     private static final Logger log = LoggerFactory.getLogger(HBaseIdService.class);
     
     public static final byte[] QUALIFIER = ArrayUtils.EMPTY_BYTE_ARRAY;

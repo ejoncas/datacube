@@ -15,11 +15,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.lang.NotImplementedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.Lists;
 import com.urbanairship.datacube.Address;
 import com.urbanairship.datacube.Batch;
 import com.urbanairship.datacube.BoxedByteArray;
@@ -174,7 +174,16 @@ public class MapDbHarness<T extends Op> implements DbHarness<T> {
 
     @Override
     public List<Optional<T>> multiGet(List<Address> addresses) throws IOException {
-        throw new NotImplementedException();
+        List<Optional<T>> resultsOptional = Lists.newArrayList();
+        for(Address add:addresses){
+        	try {
+        		resultsOptional.add(get(add));
+        	} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+        }
+        
+        return resultsOptional;
     }
     
     private static class NullFuture implements Future<Object> {
