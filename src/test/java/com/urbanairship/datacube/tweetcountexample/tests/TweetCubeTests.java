@@ -51,6 +51,7 @@ public class TweetCubeTests extends EmbeddedClusterTestAbstract {
 				idService, 
 				CommitType.INCREMENT, // Use native HBase increments for mutations
 				10, // Number of concurrent threads to flush mutations to the database
+				10,
 				2, // How many times to retry on IOException, handles temporary issues
 				2, // unused unless CommiType.READ_COMBINE_CAS is used
 				null); // Unique id used in metrics reporting

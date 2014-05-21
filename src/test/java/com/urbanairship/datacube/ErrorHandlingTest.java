@@ -34,7 +34,7 @@ public class ErrorHandlingTest extends EmbeddedClusterTestAbstract {
         
         DbHarness<LongOp> dbHarness = new HBaseDbHarness<LongOp>(pool, "XY".getBytes(), 
                 "nonexistentTable".getBytes(), "nonexistentCf".getBytes(), LongOp.DESERIALIZER, 
-                idService, CommitType.INCREMENT, 5, 2, 2, null);
+                idService, CommitType.INCREMENT, 5, 5,2, 2, null);
         
         DataCube<LongOp> cube;
         

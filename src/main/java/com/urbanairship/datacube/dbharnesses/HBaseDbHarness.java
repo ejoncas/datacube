@@ -14,7 +14,6 @@ import com.yammer.metrics.core.Histogram;
 import com.yammer.metrics.core.Timer;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.NotImplementedException;
 import org.apache.hadoop.hbase.client.Get;
 import org.apache.hadoop.hbase.client.HTablePool;
 import org.apache.hadoop.hbase.client.Put;
@@ -54,12 +53,13 @@ public class HBaseDbHarness<T extends Op> implements DbHarness<T> {
             byte[] cf, Deserializer<T> deserializer, IdService idService, CommitType commitType) 
                     throws IOException {
         this(pool, uniqueCubeName, tableName, cf, deserializer, idService, commitType,
-                5, 5, 10, null);
+                5, 5,5, 10, null);
     }
+    
     
     public HBaseDbHarness(HTablePool pool, byte[] uniqueCubeName, byte[] tableName, 
             byte[] cf, Deserializer<T> deserializer, IdService idService, CommitType commitType, 
-            int numFlushThreads, int numIoeTries, int numCasTries, String metricsScope)
+            int numFlushThreads,int queueSize, int numIoeTries, int numCasTries, String metricsScope)
                     throws IOException {
         this.pool = pool;
         this.deserializer = deserializer;
@@ -81,7 +81,7 @@ public class HBaseDbHarness<T extends Op> implements DbHarness<T> {
                 metricsScope, true);
 
         String cubeName = new String(uniqueCubeName);
-        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(numFlushThreads);
+        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(queueSize);
         this.flushExecutor = new ThreadPoolExecutor(numFlushThreads, numFlushThreads, 1,
                 TimeUnit.MINUTES, workQueue, new NamedThreadFactory("HBase DB flusher "+cubeName));
 

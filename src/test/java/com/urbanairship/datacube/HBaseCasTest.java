@@ -54,7 +54,7 @@ public class HBaseCasTest extends EmbeddedClusterTestAbstract {
         HTablePool pool = new HTablePool(getTestUtil().getConfiguration(), Integer.MAX_VALUE);
         DbHarness<BytesOp> dbHarness = new HBaseDbHarness<BytesOp>(pool, ArrayUtils.EMPTY_BYTE_ARRAY, 
                 tableName, cfName,  new BytesOpDeserializer(), idService, CommitType.READ_COMBINE_CAS,
-                3, 20, 20, "testscope");
+                3,3, 20, 20, "testscope");
         
         final DataCube<BytesOp> dataCube = new DataCube<BytesOp>(dimensions, rollups);
         final DataCubeIo<BytesOp> dataCubeIo = new DataCubeIo<BytesOp>(dataCube, dbHarness, 5, Long.MAX_VALUE,
